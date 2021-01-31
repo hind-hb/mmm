@@ -1,0 +1,56 @@
+
+{% extends 'base.html' %}
+{%load widget_tweaks %}
+{%block content%}
+<body>
+    <div class="container">
+
+  <div class="row ">
+
+      <div class="col-sm-3 ">
+
+           {% csrf_token %}
+
+              {%for field in myform%}
+               <div class="form-group" >
+                   <form method="post">
+                   {{field.label_tag}}
+                   {% render_field field class="form-control" %}
+                       </form>
+               </div>
+               {%endfor%}
+            <input type="submit" value="Submit">
+
+      </div>
+
+      <div class="col-sm-6 ">
+      <table class="table table-sm">
+  <thead>
+    <tr>
+
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">Department</th>
+       <th scope="col">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for obje in obj%}
+
+    <tr>
+
+      <td>{{obje.name}}</td>
+      <td>{{obje.address}}</td>
+      <td>{{obje.department}}</td>
+      <td>{{obje.date}}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+          </div>
+    </div>
+  </div>
+    </div>
+    </body>
+{%endblock content%}
+</html>
